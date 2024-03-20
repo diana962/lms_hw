@@ -1,14 +1,12 @@
 from django.db import models
 
-# Create your models here.
 class Item(models.Model):
     name = models.CharField(max_length=30)
     price = models.DecimalField(max_digits=10, decimal_places=2)
 
     def __str__(self):
-        return f'{self.name}: {self.price}'
+        return f'{self.name}'
 
-self
 class Client(models.Model):
     name = models.CharField(max_length=30)
     age = models.IntegerField()
@@ -18,3 +16,9 @@ class Client(models.Model):
     def __str__(self):
         return f'{self.name}'
 
+class Purchase(models.Model):
+    # buyer = models.OneToOneField(Client, on_delete=models.CASCADE)
+    # quantity = models.IntegerField()
+    # date = models.DateField()
+    client = models.ForeignKey(Client,on_delete=models.CASCADE,related_name='purchases')
+    item = models.ForeignKey(Item,on_delete=models.CASCADE,related_name='purchases')

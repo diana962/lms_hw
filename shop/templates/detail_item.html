@@ -1,0 +1,22 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Детали товара</title>
+</head>
+<body>
+    <h1>{{ item.name }}</h1>
+    <p>Описание: {{ item.description }}</p>
+    <p>Цена: {{ item.price }}</p>
+
+    <h2>Покупки</h2>
+    <ul>
+        {% for purchase in purchases %}
+            <li>
+                Количество: {{ purchase.quantity }},
+                Дата: {{ purchase.date }},
+                Покупатель: {{ purchase.buyer }}
+            </li>
+        {% endfor %}
+    </ul>
+</body>
+</html>
